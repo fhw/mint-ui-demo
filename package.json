@@ -1,0 +1,29 @@
+{
+  "name": "vue_demo",
+  "version": "1.0.0",
+  "description": "学习vue，搭建vue+webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fhw/vueDemo.git"
+  },
+  "keywords": [
+    "vue",
+    "webpack"
+  ],
+  "author": "fhw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fhw/vueDemo/issues"
+  },
+  "homepage": "https://github.com/fhw/vueDemo#readme",
+  "devDependencies": {
+    "webpack": "^2.5.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
+}
