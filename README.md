@@ -35,5 +35,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ----------------------------------------------------------------------
 目标：
 1.理解网页模块思想，然后进行模块开发。
-2.需要掌握vue+webpack 的开发模式
-3.使用vue开发一个项目demo（使用路由，有首页，有列表页、有详情页）
+
+2.需要掌握vue+webpack 的开发模式.
+
+3.使用vue开发一个项目demo（使用路由，有首页，有列表页、有详情页）.
