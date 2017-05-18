@@ -1,8 +1,11 @@
 <template>
     <div id="app">
-        <topnav></topnav>
+        <router-view name="b"></router-view>
+        <!-- <topnav></topnav> -->
         <img src="./assets/logo.png">
-        <router-view></router-view>
+        <!-- <router-link to="/hello">Hello</router-link> -->
+        <!-- <router-link to="/topnav">topnav</router-link> -->
+        <router-view name="a"></router-view>
     </div>
 </template>
 <script>

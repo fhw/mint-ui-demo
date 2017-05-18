@@ -1,15 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
+import topnav from '@/components/topnav'
 
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Hello',
-      component: Hello
-    }
-  ]
+	mode: "history",
+    routes: [{
+            
+            path: '/',
+            // name: 'Hello',
+            components: {
+                a: Hello,
+                b: topnav
+            }
+        }
+        // ,{
+        // 	path:'/',
+        // 	name:'topnav',
+        // 	component:topnav
+        // }
+    ]
 })
