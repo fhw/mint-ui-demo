@@ -1,6 +1,6 @@
 <template>
     <div id="topnav">
-        <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu theme="light" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
             <el-row type="flex" justify="center">
                 <el-menu-item index="1">首页</el-menu-item>
                 <el-submenu index="2">
@@ -17,7 +17,7 @@
 </template>
 <script>
 export default {
-    name: 'topnav',
+    name: 'top_nav',
     data() {
         return {
             activeIndex: '1',

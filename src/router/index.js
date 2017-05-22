@@ -8,18 +8,12 @@ Vue.use(Router)
 export default new Router({
 	mode: "history",
     routes: [{
-            
             path: '/',
-            // name: 'Hello',
             components: {
                 a: Hello,
                 b: topnav
             }
         }
-        // ,{
-        // 	path:'/',
-        // 	name:'topnav',
-        // 	component:topnav
-        // }
+
     ]
 })

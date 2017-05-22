@@ -23,6 +23,21 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+// //获取本地json文件
+// var appData=require('../src/mock/jokeLastest.json');
+// var jokeList = appData.result;
+ 
+// var apiRoutes = express.Router();
+
+// apiRoutes.get('/jokeList',function (req,res) {
+//   res.json({
+//     errno:0,
+//     data:jokeList
+//   });
+// });
+// //路由分配 
+// app.use('/api',apiRoutes);
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
