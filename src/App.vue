@@ -1,16 +1,24 @@
 <template>
     <div id="app">
-        <router-view name="b"></router-view>
-        <router-view name="a"></router-view>
+        <div class="contrainer">
+            <mt-header fixed title="豆瓣电影">
+                <router-link to="/" slot="left">
+                    <mt-button icon="back">返回</mt-button>
+                </router-link>
+                <router-link to="/search" slot="right">
+                    <mt-button icon="search"></mt-button>
+                </router-link>
+            </mt-header>
+            <router-view></router-view>
+
+        </div>
+        <router-view name='itSwipe'></router-view>
+        <!-- <router-view name="searchMovie"></router-view> -->
     </div>
 </template>
 <script>
-import topnav from './components/topnav.vue'
 export default {
     name: 'app',
-    components: {
-        topnav
-    }
 }
 </script>
 <style>
@@ -20,5 +28,10 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+}
+
+.contrainer {
+    width: 100%;
+    height: 100%;
 }
 </style>

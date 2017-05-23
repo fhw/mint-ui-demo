@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">
+    <div class="top250-card-list">
         <h1></h1>
         <button @click='getData'>点我</button>
         <el-card class="box-card" v-for="(list, index) in msg" :key="list.id">
@@ -14,7 +14,7 @@
 </template>
 <script>
 export default {
-    name: 'hello',
+    name: 'top250-card-list',
     data() {
         return {
             msg: '',

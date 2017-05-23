@@ -1,19 +1,22 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Hello from '@/components/Hello'
-import topnav from '@/components/topnav'
+import Vue from 'vue';
+import Router from 'vue-router';
+import top250List from '@/components/top250List';
+import topnav from '@/components/topnav';
+import searchMovie from '@/components/searchMovie';
+import inTheaterSwipe from '@/components/inTheaterSwipe'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-	mode: "history",
+    mode: "history",
     routes: [{
-            path: '/',
-            components: {
-                a: Hello,
-                b: topnav
-            }
+        path: '/',
+        // component: '',
+        components:{
+        	itSwipe:inTheaterSwipe,
         }
-
-    ]
+    }, {
+        path: '/search',
+        component: searchMovie,
+    }]
 })

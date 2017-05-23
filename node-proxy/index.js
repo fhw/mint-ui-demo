@@ -23,7 +23,7 @@ app.get('/movie/:type', function (req, res) {
   var sreq = request.get(HOST + req.originalUrl)
   sreq.pipe(res);
   sreq.on('end', function (error, res) {
-    console.log('end');
+    console.log('/movie/:type');
   });
 })
 
@@ -31,7 +31,7 @@ app.get('/movie/subject/:id', function (req, res) {
   var sreq = request.get(HOST + req.originalUrl)
   sreq.pipe(res);
   sreq.on('end', function (error, res) {
-    console.log('end');
+    console.log('/movie/subject/:id');
   });
 })
 
@@ -39,7 +39,7 @@ app.get('/movie/search', function (req, res) {
   var sreq = request.get(HOST + req.originalUrl)
   sreq.pipe(res);
   sreq.on('end', function (error, res) {
-    console.log('end');
+    console.log('/movie/search');
   });
 })
 
