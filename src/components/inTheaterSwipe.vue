@@ -13,8 +13,11 @@
                     <div class="swipeIntro">
                         <strong>{{item.title}}</strong>
                         <p>({{item.original_title}})</p>
+                        <mt-cell>
+                            <img slot="icon" src="../../static/images/ratingStar.png" width="18" height="18">
+                        </mt-cell>
                         <div class="genres-tag" v-for='tags in item.genres'>
-                        	{{tags}}
+                            {{tags}}
                         </div>
                     </div>
                 </div>
@@ -27,20 +30,21 @@ export default {
     data() {
             return {
                 imgList: [],
-                devWidth:''
+                devWidth: ''
             }
         },
-        watch:{
-        	
+        watch: {
+
         },
         mothods: {
-            
+
         },
-        created: function() {
+        beforeCreate: function() {
             var city = '广州';
             var that = this;
             this.$http.get('http://127.0.0.1:8081/movie/in_theaters?city=' + city).then(function(response) {
                 that.imgList = response.data.subjects;
+                // console.log(that.$router.currentRoute);
             }).catch(function(error) {
                 console.log(error);
             })
@@ -58,46 +62,59 @@ export default {
 .swipe-wrap,
 .in-theaters-title {
     width: 100%;
-    position: absolute;
+    /*position: absolute;*/
     background: #fff;
 }
 
+.in-theaters-title {
+    height: 32px;
+    font-size: 20px;
+}
+
+.in-theaters-title span {
+    color: #000;
+    margin: 5px 25px;
+    float: left;
+}
+
 .in-theaters-title a {
-    position: absolute;
-    right: 0;
+    margin: 5px 5px;
+    float: right;
 }
 
 .swipe-wrap {
-	overflow: hidden;
+    overflow: hidden;
     top: 21px;
     width: 100%;
     height: 139px;
+    margin: 0 10px;
 }
 
-.swipeImg,
-.in-theaters-title span {
-    position: absolute;
-    left: 0;
+.swipeImg {
+    float: left;
 }
 
 .swipeIntro {
+    float: left;
+    margin-left: 10px;
     text-align: left;
-    position: absolute;
-    left: 110px;
 }
 
 .swipeIntro p {
-	font-style: italic;
-    width: 220px;  
-    white-space: nowrap;  
-    overflow: hidden;  
-    text-overflow: ellipsis; 
+    font-style: italic;
+    width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.genres-tag{
-	max-width: 6em;
-	height: 20px;
-	border: 1px solid #FF5722;
-	border-radius: 4px;
+.genres-tag {
+    margin-left: 5px;
+    padding: 1px 2px;
+    display: inline-block;
+    max-width: 6em;
+    height: 20px;
+    border: 1px solid #FF5722;
+    border-radius: 4px;
 }
 </style>

@@ -2,7 +2,7 @@
     <div id="app">
         <div class="contrainer">
             <mt-header fixed title="豆瓣电影">
-                <router-link to="/" slot="left">
+                <router-link to="/" slot="left" v-if='hasBackBtn()'>
                     <mt-button icon="back">返回</mt-button>
                 </router-link>
                 <router-link to="/search" slot="right">
@@ -18,6 +18,17 @@
 <script>
 export default {
     name: 'app',
+    methods:{
+        hasBackBtn:function () {
+            var nowRouterPath;
+            nowRouterPath=this.$router.currentRoute.path;
+            if (nowRouterPath=='/'||nowRouterPath=='') {
+                return false;
+            }else {
+                return true;
+            }
+        }
+    }
 }
 </script>
 <style>

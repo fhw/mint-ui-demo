@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import top250List from '@/components/top250List';
-import topnav from '@/components/topnav';
 import searchMovie from '@/components/searchMovie';
 import inTheaterSwipe from '@/components/inTheaterSwipe'
 
