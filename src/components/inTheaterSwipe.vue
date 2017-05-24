@@ -14,7 +14,9 @@
                         <strong>{{item.title}}</strong>
                         <p>({{item.original_title}})</p>
                         <mt-cell>
-                            <img slot="icon" src="../../static/images/ratingStar.png" width="18" height="18">
+                            <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
+                            <span v-else>暂无评分</span>
+                            <img v-for="starNum in Math.round(item.rating.average/2)" slot="icon" src="../../static/images/ratingStar.png" width="18" height="18">
                         </mt-cell>
                         <div class="genres-tag" v-for='tags in item.genres'>
                             {{tags}}

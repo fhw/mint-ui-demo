@@ -28,13 +28,6 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-            '/dlsys': {
-                target: 'http://192.168.16.211:84',
-                changeOrigin: true,
-                pathRewrith: {
-                    '^/dlsys': '/dlsys'
-                }
-            },
             // '/api': {
             //     target: 'http://japi.juhe.cn/joke/content/list.from',
             //     changeOrigin: true,
