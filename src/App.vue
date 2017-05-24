@@ -10,7 +10,6 @@
                 </router-link>
             </mt-header>
             <router-view></router-view>
-
         </div>
         <router-view name='itSwipe'></router-view>
         <!-- <router-view name="searchMovie"></router-view> -->
