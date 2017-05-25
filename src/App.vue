@@ -1,16 +1,14 @@
 <template>
     <div id="app">
-        <div class="contrainer">
-            <mt-header fixed title="豆瓣电影">
-                <router-link to="/" slot="left" v-if='hasBackBtn()'>
-                    <mt-button icon="back">返回</mt-button>
-                </router-link>
+        <div class="top-header">
+            <mt-header fixed title="豆瓣电影">    
+                    <mt-button icon="back" slot="left" v-if='hasBackBtn()' @click='goBack'>返回</mt-button>
                 <router-link to="/search" slot="right">
                     <mt-button icon="search"></mt-button>
                 </router-link>
             </mt-header>
-            <router-view></router-view>
         </div>
+        <router-view></router-view>
         <router-view name='itSwipe'></router-view>
         <!-- <router-view name="searchMovie"></router-view> -->
     </div>
@@ -27,6 +25,9 @@ export default {
             }else {
                 return true;
             }
+        },
+        goBack:function () {
+            this.$router.go(-1);
         }
     }
 }
@@ -40,8 +41,13 @@ export default {
     color: #2c3e50;
 }
 
-.contrainer {
+.top-header{
     width: 100%;
     height: 100%;
+}
+.top-header h1{
+    font-family: YouYuan;
+    font-size: 20px;
+    letter-spacing:4px;
 }
 </style>

@@ -1,15 +1,10 @@
 <template>
     <div class="top250-card-list">
-        <h1></h1>
-        <button @click='getData'>点我</button>
-        <el-card class="box-card" v-for="(list, index) in msg" :key="list.id">
-            <div class="text item">
+            <div class="text item" v-for="(list, index) in msg" :key="list.id">
                 <img :src="list.images.small" class="image">
                 <span>{{list.title}}<i>{{list.original_title}}</i></span><br>
                 年份：{{list.year}}评分：{{list.rating.average}}
-                <a :href="list.alt">查看</a>
             </div>
-        </el-card>
     </div>
 </template>
 <script>
@@ -18,18 +13,15 @@ export default {
     data() {
         return {
             msg: '',
-            myData: []
         }
     },
-    methods: {
-        getData: function() {
+    created:function() {
             var that = this;
             this.$http.get('http://127.0.0.1:8081/movie/top250').then(function(response) {
                 that.msg = response.data.subjects;
             }).catch(function(error) {
                 console.log(error);
             });
-        }
     }
 }
 </script>

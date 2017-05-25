@@ -5,24 +5,26 @@
             <router-link to=''>更多</router-link>
         </div>
         <mt-swipe :auto="4000">
-            <mt-swipe-item v-for='(item,itemIndex) in imgList' :key='item.id' v-if='itemIndex<3'>
-                <div class="swipe-wrap">
-                    <div class="swipeImg">
-                        <img :src="item.images.medium" :alt="item.title">
-                    </div>
-                    <div class="swipeIntro">
-                        <strong>{{item.title}}</strong>
-                        <p>({{item.original_title}})</p>
-                        <mt-cell>
-                            <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
-                            <span v-else>暂无评分</span>
-                            <img v-for="starNum in Math.round(item.rating.average/2)" slot="icon" src="../../static/images/ratingStar.png" width="18" height="18">
-                        </mt-cell>
-                        <div class="genres-tag" v-for='tags in item.genres'>
-                            {{tags}}
+            <mt-swipe-item v-for='(item,itemIndex) in imgList' :key='item.id' v-if='itemIndex<5'>
+                <router-link :to="{path:'/movieDetail/'+item.id}">
+                    <div class="swipe-wrap">
+                        <div class="swipeImg">
+                            <img v-lazy="item.images.medium" :alt="item.title">
+                        </div>
+                        <div class="swipeIntro">
+                            <h3>{{item.title}}</h3>
+                            <p>({{item.original_title}})</p>
+                            <mt-cell>
+                                <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
+                                <span v-else>暂无评分</span>
+                                <img v-for="starNum in Math.round(item.rating.average/2)" slot="icon" src="../../static/images/ratingStar.png" width="18" height="18">
+                            </mt-cell>
+                            <div class="genres-tag" v-for='tags in item.genres'>
+                                {{tags}}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </router-link>
             </mt-swipe-item>
         </mt-swipe>
     </div>
@@ -32,14 +34,7 @@ export default {
     data() {
             return {
                 imgList: [],
-                devWidth: ''
             }
-        },
-        watch: {
-
-        },
-        mothods: {
-
         },
         beforeCreate: function() {
             var city = '广州';
@@ -59,6 +54,7 @@ export default {
     top: 40px;
     width: 100%;
     height: 150px;
+    background: #fff;
 }
 
 .swipe-wrap,
@@ -74,6 +70,8 @@ export default {
 }
 
 .in-theaters-title span {
+    letter-spacing: 2px;
+    font-family: YouYuan;
     color: #000;
     margin: 5px 25px;
     float: left;
@@ -104,7 +102,7 @@ export default {
 
 .swipeIntro p {
     font-style: italic;
-    width: 220px;
+    width: 210px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
