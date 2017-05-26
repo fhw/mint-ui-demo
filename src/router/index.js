@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import MovieList from '@/components/MovieList';
+import movieList from '@/components/MovieList';
 import searchMovie from '@/components/searchMovie';
 import inTheaterSwipe from '@/components/inTheaterSwipe'
 import movieDetail from '@/components/movieDetail'
+import top250Swipe from '@/components/top250Swipe'
 
 Vue.use(Router);
 
@@ -14,6 +15,7 @@ export default new Router({
         // component: '',
         components:{
         	itSwipe:inTheaterSwipe,
+            top250Swipe:top250Swipe
         }
     }, {
         path: '/search',
@@ -22,7 +24,7 @@ export default new Router({
         path:'/movieDetail/:id',
         component:movieDetail
     },{
-            path:'/movie/top250',
-            component:top250List
+            path:'/movie/movieList/:type',
+            component:movieList
     }]
 })

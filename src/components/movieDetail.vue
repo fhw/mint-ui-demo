@@ -62,7 +62,7 @@ export default {
         }
 }
 </script>
-<style type="text/css">
+<style scoped>
 #movie-detail {
     position: absolute;
     background: #FFF;
@@ -109,11 +109,6 @@ export default {
 .summary p{
 	text-indent:2em;
 	margin: 4px 5px;
-}
-
-hr {
-    margin: 5px 10px;
-    border: 1px solid #f5f5f5;
 }
 
 div.mint-cell-wrapper {

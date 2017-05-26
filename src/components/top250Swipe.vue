@@ -1,13 +1,13 @@
 <template>
-    <div id="in-theater-swipe">
-        <header class="in-theaters-title">
+    <div id="top250-swipe">
+        <header class="top250-title">
             <span>{{imgList.title}}</span>
             <router-link to=''>更多</router-link>
         </header>
-        <div class="swipe-wrap">
-            <mt-swipe :auto="4000">
-                <mt-swipe-item v-for='(item,itemIndex) in imgList.subjects' :key='item.id' v-if='itemIndex<5'>
-                    <router-link :to="{path:'/movieDetail/'+item.id}">
+        <mt-swipe :auto="4000">
+            <mt-swipe-item v-for='(item,itemIndex) in imgList.subjects' :key='item.id' v-if='itemIndex<5'>
+                <router-link :to="{path:'/movieDetail/'+item.id}">
+                    <div class="swipe-wrap">
                         <div class="swipeImg">
                             <img v-lazy="item.images.medium" :alt="item.title">
                         </div>
@@ -23,10 +23,10 @@
                                 {{tags}}
                             </div>
                         </div>
-                    </router-link>
-                </mt-swipe-item>
-            </mt-swipe>
-        </div>
+                    </div>
+                </router-link>
+            </mt-swipe-item>
+        </mt-swipe>
     </div>
 </template>
 <script type="text/javascript">
@@ -37,9 +37,8 @@ export default {
             }
         },
         beforeCreate: function() {
-            var city = '广州';
             var that = this;
-            this.$http.get('http://127.0.0.1:8081/movie/in_theaters?city=' + city).then(function(response) {
+            this.$http.get('http://127.0.0.1:8081/movie/top250?count=5').then(function(response) {
                 that.imgList = response.data;
             }).catch(function(error) {
                 console.log(error);
@@ -48,26 +47,27 @@ export default {
 }
 </script>
 <style scoped>
-#in-theater-swipe {
-    /*    position: absolute;
+#top250-swipe {
+/*    position: absolute;
     top: 40px;*/
     width: 100%;
+    height: 150px;
     background: #fff;
 }
 
 .swipe-wrap,
-.in-theaters-title {
+.top250-title {
     width: 100%;
     /*position: absolute;*/
     background: #fff;
 }
 
-.in-theaters-title {
+.top250-title {
     height: 32px;
     font-size: 20px;
 }
 
-.in-theaters-title span {
+.top250-title span {
     letter-spacing: 2px;
     font-family: YouYuan;
     color: #000;
@@ -75,7 +75,7 @@ export default {
     float: left;
 }
 
-.in-theaters-title a {
+.top250-title a {
     margin: 5px 5px;
     float: right;
 }
@@ -84,7 +84,7 @@ export default {
     overflow: hidden;
     top: 21px;
     width: 100%;
-    height: 150px;
+    height: 139px;
     margin: 0 10px;
 }
 
@@ -115,5 +115,4 @@ export default {
     border: 1px solid #FF5722;
     border-radius: 4px;
 }
-
 </style>

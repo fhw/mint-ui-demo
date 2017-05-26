@@ -1,10 +1,21 @@
 <template>
-    <div class="movie-list">
-            <section class="list" v-for="(list, index) in msg" :key="list.id">
-                <img :src="list.images.small" class="image">
-                <span>{{list.title}}<i>{{list.original_title}}</i></span><br>
-                年份：{{list.year}}评分：{{list.rating.average}}
-            </section>
+    <div id="movie-list">
+    <h1>{{msg.title}}</h1>
+        <section class="list">
+            <div class="movie-item" v-for="(list, index) in msg.subjects" :key="list.id" @click='toDetail(list.id)'>
+                <div class="rating-icon">
+                    
+                </div>
+                <img class="item-image" :src="list.images.medium">
+                <div class="item-intro">
+                    <span class="item-title">{{list.title}}</span>
+                    <div class="item-star">
+                        <span class="starImg" v-for="starNum in Math.round(list.rating.average/2)"></span>
+                        <span>{{list.rating.average}}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 <script>
@@ -12,68 +23,93 @@ export default {
     name: 'movie-list',
     data() {
         return {
-            msg: '',
+            msg: [{
+                subjects:{
+                    images:{
+                        medium:''
+                    }
+                }
+            }],
+            listType: '',
+            total:''
         }
     },
-    created:function() {
-            var that = this;
-            this.$http.get('http://127.0.0.1:8081/movie/:type').then(function(response) {
-                that.msg = response.data.subjects;
-            }).catch(function(error) {
-                console.log(error);
+    created: function() {
+        var that = this;
+        this.listType = this.$route.params.type;
+        this.$http.get('http://127.0.0.1:8081/movie/' + that.listType+'?count='+that.total).then(function(response) {
+            that.total=response.data.total;
+            that.msg = response.data;
+        }).catch(function(error) {
+            console.log(error);
+        });
+    },
+    methods: {
+        toDetail: function(id) {
+            this.$router.push({
+                path: '/movieDetail/' + id
             });
+        }
     }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
+#movie-list {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+h1{
+    margin: 10px 0;
     font-weight: normal;
+    color: #2384E8;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    width: 100%;
+    height: 100%;
 }
 
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
-
-.time {
-    font-size: 13px;
-    color: #999;
-}
-
-.bottom {
-    margin-top: 13px;
-    line-height: 12px;
-}
-
-.button {
-    padding: 0;
-    float: right;
-}
-
-.image {
-    width: 64px;
+.movie-item {
     display: block;
+    width: 100px;
+    height: 200px;
+    margin: 10px auto;
 }
 
-.clearfix:before,
-.clearfix:after {
-    display: table;
-    content: "";
+span.item-title {
+    width: 100%;
+    margin-top: 5px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.clearfix:after {
-    clear: both
+.item-image {
+    display: block;
+    width: 100%;
+    height: 148px;
+    margin: auto;
+}
+
+.item-star {
+    margin-top: -10px;
+}
+
+span.starImg {
+    display: inline-block;
+    background-image: url('../../static/images/ratingStar.png');
+    background-size: 10px 10px;
+    height: 10px;
+    width: 10px;
 }
 </style>
 </style>
