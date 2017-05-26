@@ -34,16 +34,25 @@ export default {
     data() {
             return {
                 imgList: [],
-                city:'广州',
+                city: '广州',
             }
         },
         beforeCreate: function() {
             var that = this;
-            this.$http.get('http://127.0.0.1:8081/movie/in_theaters?city=' + that.city).then(function(response) {
-                that.imgList = response.data;
-            }).catch(function(error) {
-                console.log(error);
-            })
+            var jsonp = require('jsonp');
+            jsonp('https://api.douban.com/v2/movie/in_theaters?city=' + that.city,null, function(err, response) {
+                    if (err) {
+                        console.error(err.message);
+                    } else {
+                        console.log(response);
+                        that.imgList = response;
+                    }
+                })
+                // this.$http.get('http://127.0.0.1:8081/movie/in_theaters?city=' + that.city).then(function(response) {
+                //     that.imgList = response.data;
+                // }).catch(function(error) {
+                //     console.log(error);
+                // })
         }
 }
 </script>
@@ -112,5 +121,4 @@ export default {
     border: 1px solid #FF5722;
     border-radius: 4px;
 }
-
 </style>
