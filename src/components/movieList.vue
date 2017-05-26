@@ -11,7 +11,8 @@
                     <span class="item-title">{{list.title}}</span>
                     <div class="item-star">
                         <span class="starImg" v-for="starNum in Math.round(list.rating.average/2)"></span>
-                        <span>{{list.rating.average}}</span>
+                        <span class="movie-rating" v-if='list.rating.average!=0'>{{list.rating.average}}</span>
+                        <span class="movie-rating" v-else>暂无评分</span>
                     </div>
                 </div>
             </div>
@@ -102,6 +103,10 @@ span.item-title {
 
 .item-star {
     margin-top: -10px;
+}
+
+.movie-rating{
+    color: #888;
 }
 
 span.starImg {

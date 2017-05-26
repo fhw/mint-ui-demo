@@ -2,7 +2,7 @@
     <div id="in-theater-swipe">
         <header class="in-theaters-title">
             <span>{{imgList.title}}</span>
-            <router-link to=''>更多</router-link>
+            <router-link :to='{path:"movie/movieList/in_theaters?city="+this.city}'>更多</router-link>
         </header>
         <div class="swipe-wrap">
             <mt-swipe :auto="4000">
@@ -34,12 +34,12 @@ export default {
     data() {
             return {
                 imgList: [],
+                city:'广州',
             }
         },
         beforeCreate: function() {
-            var city = '广州';
             var that = this;
-            this.$http.get('http://127.0.0.1:8081/movie/in_theaters?city=' + city).then(function(response) {
+            this.$http.get('http://127.0.0.1:8081/movie/in_theaters?city=' + that.city).then(function(response) {
                 that.imgList = response.data;
             }).catch(function(error) {
                 console.log(error);
@@ -49,8 +49,6 @@ export default {
 </script>
 <style scoped>
 #in-theater-swipe {
-    /*    position: absolute;
-    top: 40px;*/
     width: 100%;
     background: #fff;
 }
@@ -58,7 +56,6 @@ export default {
 .swipe-wrap,
 .in-theaters-title {
     width: 100%;
-    /*position: absolute;*/
     background: #fff;
 }
 

@@ -48,8 +48,6 @@ export default {
 </script>
 <style scoped>
 #top250-swipe {
-/*    position: absolute;
-    top: 40px;*/
     width: 100%;
     height: 150px;
     background: #fff;
@@ -58,7 +56,6 @@ export default {
 .swipe-wrap,
 .top250-title {
     width: 100%;
-    /*position: absolute;*/
     background: #fff;
 }
 

@@ -64,9 +64,7 @@ export default {
 </script>
 <style scoped>
 #movie-detail {
-    position: absolute;
     background: #FFF;
-    top: 40px;
     width: 100%;
     height: 100%;
 }

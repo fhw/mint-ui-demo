@@ -44,10 +44,6 @@ export default {
 }
 </script>
 <style>
-#search-movie {
-    padding-top: 40px;
-}
-
 .mint-search-list-warp {
     padding-top: 48px;
 }
