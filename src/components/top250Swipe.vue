@@ -38,11 +38,13 @@ export default {
         },
         beforeCreate: function() {
             var that = this;
-            this.$http.get('http://127.0.0.1:8081/movie/top250?count=5').then(function(response) {
-                that.imgList = response.data;
-            }).catch(function(error) {
-                console.log(error);
-            })
+            this.$http('https://api.douban.com/v2/movie/top250?count=5', null, function (err, response) {
+              if (err) {
+                console.error(err.message);
+              } else {
+                that.imgList = response;
+              }
+            });
         }
 }
 </script>

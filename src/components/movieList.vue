@@ -4,7 +4,7 @@
         <section class="list">
             <div class="movie-item" v-for="(list, index) in msg.subjects" :key="list.id" @click='toDetail(list.id)'>
                 <div class="rating-icon">
-                    
+
                 </div>
                 <img class="item-image" :src="list.images.medium">
                 <div class="item-intro">
@@ -38,11 +38,12 @@ export default {
     created: function() {
         var that = this;
         this.listType = this.$route.params.type;
-        this.$http.get('http://127.0.0.1:8081/movie/' + that.listType+'?count='+that.total).then(function(response) {
-            that.total=response.data.total;
-            that.msg = response.data;
-        }).catch(function(error) {
-            console.log(error);
+        this.$http('https://api.douban.com/v2/movie/' + that.listType+'?count='+that.total, null, function (err, response) {
+          if (err) {
+            console.error(err.message);
+          } else {
+            that.msg = response;
+          }
         });
     },
     methods: {
@@ -116,5 +117,4 @@ span.starImg {
     height: 10px;
     width: 10px;
 }
-</style>
 </style>

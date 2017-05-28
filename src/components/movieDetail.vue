@@ -26,7 +26,7 @@
             </section>
             <hr>
             <section class="summary">
-                <h3>简介</h3> 
+                <h3>简介</h3>
                 <p>{{detail.summary}}</p>
             </section>
             <hr>
@@ -50,12 +50,13 @@ export default {
         },
         beforeCreate: function() {
             var that = this;
-            this.$http.get('http://127.0.0.1:8081/movie/subject/' + that.$route.params.id)
-                .then(function(response) {
-                    that.detail = response.data;
-                }).catch(function(error) {
-                    console.log(error);
-                });
+            this.$http('https://api.douban.com/v2/movie/subject/' + that.$route.params.id, null, function (err, response) {
+              if (err) {
+                console.error(err.message);
+              } else {
+                that.detail = response;
+              }
+            });
         },
         mounted: function() {
             this.movieID = this.$route.params.id;

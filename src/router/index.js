@@ -9,7 +9,7 @@ import top250Swipe from '@/components/top250Swipe'
 Vue.use(Router);
 
 export default new Router({
-    // mode: "history",
+    mode: "history",
     routes: [{
         path: '/',
         // component: '',

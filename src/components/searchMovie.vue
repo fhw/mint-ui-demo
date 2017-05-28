@@ -26,12 +26,14 @@ export default {
         },
         watch: {
             value: function() {
-                var that = this;
-                this.$http.get('http://127.0.0.1:8081/movie/search?q=' + that.value).then(function(response) {
-                    that.result = response.data.subjects;
-                }).catch(function(error) {
-                    console.log(error);
-                });
+              var that = this;
+              this.$http('https://api.douban.com/v2/movie/search?q=' + that.value, null, function (err, response) {
+                if (err) {
+                  console.error(err.message);
+                } else {
+                  that.result = response.subjects;
+                }
+              });
             }
         },
         methods: {
