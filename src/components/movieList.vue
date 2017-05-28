@@ -35,7 +35,19 @@ export default {
             total:''
         }
     },
+    watch:{
+      '$route':'getData'
+    },
     created: function() {
+        this.getData();
+    },
+    methods: {
+        toDetail: function(id) {
+            this.$router.push({
+                path: '/movieDetail/' + id
+            });
+        },
+      getData:function () {
         var that = this;
         this.listType = this.$route.params.type;
         this.$http('https://api.douban.com/v2/movie/' + that.listType+'?count='+that.total, null, function (err, response) {
@@ -45,13 +57,7 @@ export default {
             that.msg = response;
           }
         });
-    },
-    methods: {
-        toDetail: function(id) {
-            this.$router.push({
-                path: '/movieDetail/' + id
-            });
-        }
+      }
     }
 }
 </script>
