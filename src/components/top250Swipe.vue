@@ -2,7 +2,7 @@
     <div id="top250-swipe">
         <header class="top250-title">
             <span>{{imgList.title}}</span>
-          <router-link :to='{path:"movie/movieList/top250"}'>更多</router-link>
+            <router-link :to='{path:"movie/movieList/top250"}'>更多</router-link>
         </header>
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for='(item,itemIndex) in imgList.subjects' :key='item.id' v-if='itemIndex<5'>
@@ -38,12 +38,12 @@ export default {
         },
         beforeCreate: function() {
             var that = this;
-            this.$http('https://api.douban.com/v2/movie/top250?count=5', null, function (err, response) {
-              if (err) {
-                console.error(err.message);
-              } else {
-                that.imgList = response;
-              }
+            this.$http('https://api.douban.com/v2/movie/top250?count=5', null, function(err, response) {
+                if (err) {
+                    console.error(err.message);
+                } else {
+                    that.imgList = response;
+                }
             });
         }
 }

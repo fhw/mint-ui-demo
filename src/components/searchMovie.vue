@@ -26,14 +26,14 @@ export default {
         },
         watch: {
             value: function() {
-              var that = this;
-              this.$http('https://api.douban.com/v2/movie/search?q=' + that.value, null, function (err, response) {
-                if (err) {
-                  console.error(err.message);
-                } else {
-                  that.result = response.subjects;
-                }
-              });
+                var that = this;
+                this.$http('https://api.douban.com/v2/movie/search?q=' + that.value, null, function(err, response) {
+                    if (err) {
+                        console.error(err.message);
+                    } else {
+                        that.result = response.subjects;
+                    }
+                });
             }
         },
         methods: {

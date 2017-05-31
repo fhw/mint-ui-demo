@@ -12,7 +12,7 @@
                     </p>
                     <p>
                         导演：
-                        <br><span v-for="dName in detail.directors">{{dName.name}}</span>
+                        <br><span v-for="dName in detail.directors">{{dName.name}}/</span>
                     </p>
                     <mt-cell>
                         <span v-if='detail.rating.average!=0'>{{detail.rating.average}}分</span>
@@ -37,7 +37,6 @@
 export default {
     data() {
             return {
-                movieID: '',
                 detail: {
                     rating: {
                         average: ''
@@ -48,18 +47,28 @@ export default {
                 }
             }
         },
-        beforeCreate: function() {
-            var that = this;
-            this.$http('https://api.douban.com/v2/movie/subject/' + that.$route.params.id, null, function (err, response) {
-              if (err) {
-                console.error(err.message);
-              } else {
-                that.detail = response;
-              }
-            });
+        watch: {
+            '$route': 'getDetail'
         },
-        mounted: function() {
-            this.movieID = this.$route.params.id;
+        created: function() {
+            this.getDetail();
+        },
+        methods: {
+            getDetail: function() {
+                var that = this;
+                if (that.$route.params.id == null) {
+                    that.detail.title = '查询失败！';
+                } else {
+                    this.$http('https://api.douban.com/v2/movie/subject/' + that.$route.params.id, null, function(err, response) {
+                        if (err) {
+                            console.error(err.message);
+                        } else {
+                            that.detail = response;
+                        }
+                    });
+                }
+
+            }
         }
 }
 </script>
@@ -105,14 +114,15 @@ export default {
     line-height: 20px;
 }
 
-.summary p{
-	text-indent:2em;
-	margin: 4px 5px;
+.summary p {
+    text-indent: 2em;
+    margin: 4px 5px;
 }
 
 div.mint-cell-wrapper {
     background-image: none;
 }
+
 a.mint-cell:last-child {
     background-image: none;
 }

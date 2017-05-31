@@ -1,3 +1,4 @@
+//本地代理，用来转发豆瓣api的请求
 var express = require('express');
 var request = require('superagent')
 

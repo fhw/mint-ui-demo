@@ -2,7 +2,7 @@
     <div id="in-theater-swipe">
         <header class="in-theaters-title">
             <span>{{imgList.title}}</span>
-            <router-link :to='{path:"movie/movieList/in_theaters?city="+this.city}'>更多</router-link>
+            <router-link :to='{path:"movie/movieList/in_theaters"}'>更多</router-link>
         </header>
         <div class="swipe-wrap">
             <mt-swipe :auto="4000">
@@ -34,18 +34,25 @@ export default {
     data() {
             return {
                 imgList: [],
-                city: '广州',
             }
         },
         beforeCreate: function() {
-          var that = this;
-          this.$http('https://api.douban.com/v2/movie/in_theaters?city=' + that.city, null, function (err, response) {
-            if (err) {
-              console.error(err.message);
-            } else {
-              that.imgList = response;
-            }
-          });
+            var that = this;
+            // var city='广州';
+            this.$http('https://api.douban.com/v2/movie/in_theaters?count=5', null, function(err, response) {
+                if (err) {
+                    console.error(err.message);
+                } else {
+                    that.imgList = response;
+                }
+            });
+            // this.$http('https://api.douban.com/v2/movie/in_theaters?city=' + city, null, function (err, response) {
+            //   if (err) {
+            //     console.error(err.message);
+            //   } else {
+            //     that.imgList = response;
+            //   }
+            // });
         }
 }
 </script>
