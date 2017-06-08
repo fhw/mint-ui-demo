@@ -5,6 +5,7 @@ import searchMovie from '@/components/searchMovie';
 import inTheaterSwipe from '@/components/inTheaterSwipe';
 import movieDetail from '@/components/movieDetail';
 import top250Swipe from '@/components/top250Swipe';
+// import listTabBar from '@/components/listTabBar';
 
 Vue.use(Router);
 
@@ -15,8 +16,8 @@ export default new Router({
             // component: '',
             components: {
                 itSwipe: inTheaterSwipe,
-                top250Swipe: top250Swipe,
-                listTabBar: listTabBar
+                top250Swipe: top250Swipe
+                // listTabBar: listTabBar
             }
         }, {
             path: '/search',

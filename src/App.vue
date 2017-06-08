@@ -18,7 +18,7 @@
                 <keep-alive>
                     <router-view name='top250Swipe'></router-view>
                 </keep-alive>
-                <router-view name='listTabBar'></router-view>
+                <!--<router-view name='listTabBar'></router-view>-->
             </mt-tab-container-item>
             <mt-tab-container-item id="tab-container2">
             </mt-tab-container-item>
