@@ -31,94 +31,98 @@
 </template>
 <script type="text/javascript">
 export default {
-    data() {
-            return {
-                imgList: [],
-            }
-        },
-        beforeCreate: function() {
-            var that = this;
-            // var city='广州';
-            this.$http('https://api.douban.com/v2/movie/in_theaters?count=5', null, function(err, response) {
-                if (err) {
-                    console.error(err.message);
-                } else {
-                    that.imgList = response;
-                }
-            });
-            // this.$http('https://api.douban.com/v2/movie/in_theaters?city=' + city, null, function (err, response) {
-            //   if (err) {
-            //     console.error(err.message);
-            //   } else {
-            //     that.imgList = response;
-            //   }
-            // });
+  data() {
+    return {
+      imgList: []
+    };
+  },
+  beforeCreate: function() {
+    var that = this;
+    // var city='广州';
+    this.$http(
+      "https://api.douban.com/v2/movie/in_theaters?count=5",
+      null,
+      function(err, response) {
+        if (err) {
+          console.error(err.message);
+        } else {
+          that.imgList = response;
         }
-}
+      }
+    );
+    // this.$http('https://api.douban.com/v2/movie/in_theaters?city=' + city, null, function (err, response) {
+    //   if (err) {
+    //     console.error(err.message);
+    //   } else {
+    //     that.imgList = response;
+    //   }
+    // });
+  }
+};
 </script>
 <style scoped>
 #in-theater-swipe {
-    width: 100%;
-    background: #fff;
+  width: 100%;
+  background: #fff;
 }
 
 .swipe-wrap,
 .in-theaters-title {
-    width: 100%;
-    background: #fff;
+  width: 100%;
+  background: #fff;
 }
 
 .in-theaters-title {
-    height: 32px;
-    font-size: 20px;
+  height: 32px;
+  font-size: 20px;
 }
 
 .in-theaters-title span {
-    letter-spacing: 2px;
-    font-family: YouYuan;
-    color: #000;
-    margin: 5px 10px;
-    float: left;
+  letter-spacing: 2px;
+  font-family: YouYuan;
+  color: #000;
+  margin: 5px 10px;
+  float: left;
 }
 
 .in-theaters-title a {
-    margin: 5px 5px;
-    float: right;
+  margin: 5px 5px;
+  float: right;
 }
 
 .swipe-wrap {
-    overflow: hidden;
-    top: 21px;
-    width: 100%;
-    height: 150px;
-    margin: 0 10px;
+  overflow: hidden;
+  top: 21px;
+  width: 100%;
+  height: 150px;
+  margin: 0 10px;
 }
 
 .swipeImg {
-    float: left;
+  float: left;
 }
 
 .swipeIntro {
-    float: left;
-    margin-left: 10px;
-    text-align: left;
+  float: left;
+  margin-left: 10px;
+  text-align: left;
 }
 
 .swipeIntro p {
-    font-style: italic;
-    width: 210px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-style: italic;
+  width: 210px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .genres-tag {
-    margin-left: 5px;
-    padding: 1px 2px;
-    display: inline-block;
-    max-width: 6em;
-    height: 20px;
-    border: 1px solid #FF5722;
-    border-radius: 4px;
+  margin-left: 5px;
+  padding: 1px 2px;
+  display: inline-block;
+  max-width: 6em;
+  height: 20px;
+  border: 1px solid #ff5722;
+  border-radius: 4px;
 }
 </style>
