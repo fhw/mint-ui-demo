@@ -1,34 +1,30 @@
-# vuedemo
+# mint-ui-demo
 
 > A Vue.js project
 
-----------
+## Build Setup
 
-运行
---
+``` bash
+# install dependencies
 npm install
 
+# serve with hot reload at localhost:8080
 npm run dev
 
-----------
-#vue 学习
-----------------------------------------------------------------------
+# build for production with minification
+npm run build
 
-> 打算使用的技术栈：
+# build for production and view the bundle analyzer report
+npm run build --report
 
- - vue √ 
- - webpack √ 
- - vuex
- - vue-router √ 
- - vue-cli √ 
- - Axios（豆瓣api数据获取使用的是jsonp）√ 
- - vue-loader √ 
+# run unit tests
+npm run unit
 
+# run e2e tests
+npm run e2e
 
-----------------------------------------------------------------------
-目标：
-1.理解网页模块思想，然后进行模块开发。
+# run all tests
+npm test
+```
 
-2.需要掌握vue+webpack 的开发模式.
-
-3.使用vue开发一个项目demo（使用路由，有首页，有列表页、有详情页）.
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

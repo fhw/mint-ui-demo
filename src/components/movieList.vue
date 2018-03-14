@@ -52,7 +52,7 @@ export default {
             if (that.listType == null) {
 
             } else {
-                this.$http('https://api.douban.com/v2/movie/' + that.listType + '?count=' + that.total, null, function(err, response) {
+                this.$http('/douban/movie/' + that.listType + '?count=' + that.total, null, function(err, response) {
                     if (err) {
                         console.error(err.message);
                     } else {

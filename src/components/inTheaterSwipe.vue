@@ -1,128 +1,82 @@
 <template>
-    <div id="in-theater-swipe">
-        <header class="in-theaters-title">
-            <span>{{imgList.title}}</span>
-            <router-link :to='{path:"movie/movieList/in_theaters"}'>更多</router-link>
-        </header>
-        <div class="swipe-wrap">
-            <mt-swipe :auto="4000">
-                <mt-swipe-item v-for='(item,itemIndex) in imgList.subjects' :key='item.id' v-if='itemIndex<5'>
-                    <router-link :to="{path:'/movieDetail/'+item.id}">
-                        <div class="swipeImg">
-                            <img v-lazy="item.images.medium" :alt="item.title">
-                        </div>
-                        <div class="swipeIntro">
-                            <h3>{{item.title}}</h3>
-                            <p>({{item.original_title}})</p>
-                            <mt-cell>
-                                <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
-                                <span v-else>暂无评分</span>
-                                <img v-for="starNum in Math.round(item.rating.average/2)" slot="icon" src="../../static/images/ratingStar.png" width="18" height="18">
-                            </mt-cell>
-                            <div class="genres-tag" v-for='tags in item.genres'>
-                                {{tags}}
-                            </div>
-                        </div>
-                    </router-link>
-                </mt-swipe-item>
-            </mt-swipe>
-        </div>
+  <div id="in-theater-swipe">
+    <div class="in-theaters-title">
+      <span>{{imgList.title}}</span>
+      <router-link :to='{path:"movie/movieList/in_theaters"}'>更多</router-link>
     </div>
+    <div class="swipe-wrap">
+      <mt-swipe :auto="4000000">
+        <mt-swipe-item v-for='(item,itemIndex) in imgList.subjects' :key='item.id' v-if='itemIndex<5'>
+          <router-link class="swipe-item" :to="{path:'/movieDetail/'+item.id}">
+            <div class="swipeImg">
+              <img v-lazy="item.images.medium" :alt="item.title">
+            </div>
+            <div class="swipeIntro">
+              <p>{{item.title}}<span>({{item.original_title}})</span></p>
+              <mt-cell>
+                <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
+                <span v-else>暂无评分</span>
+                <img v-for="starNum in Math.round(item.rating.average/2)" slot="icon"
+                     src="../../static/images/ratingStar.png" width="18" height="18">
+              </mt-cell>
+              <mt-badge size="small" type="success" class="genres-tag" v-for='tags in item.genres'>
+                {{tags}}
+              </mt-badge>
+            </div>
+          </router-link>
+        </mt-swipe-item>
+      </mt-swipe>
+    </div>
+  </div>
 </template>
 <script type="text/javascript">
-export default {
-  data() {
-    return {
-      imgList: []
-    };
-  },
-  beforeCreate: function() {
-    var that = this;
-    // var city='广州';
-    this.$http(
-      "https://api.douban.com/v2/movie/in_theaters?count=5",
-      null,
-      function(err, response) {
-        if (err) {
-          console.error(err.message);
-        } else {
-          that.imgList = response;
-        }
-      }
-    );
-    // this.$http('https://api.douban.com/v2/movie/in_theaters?city=' + city, null, function (err, response) {
-    //   if (err) {
-    //     console.error(err.message);
-    //   } else {
-    //     that.imgList = response;
-    //   }
-    // });
-  }
-};
+  import api from './../api/api'
+  export default {
+    data() {
+      return {
+        imgList: [],
+        count: 5
+      };
+    },
+    created: function () {
+      let that = this;
+      // var city='广州';
+      api.inTheaters({params:{count:this.count}}).then((data) => {
+        that.imgList = data.data;
+      }).catch((err) => {
+        console.error(err.message);
+      })
+    }
+  };
 </script>
-<style scoped>
-#in-theater-swipe {
-  width: 100%;
-  background: #fff;
-}
+<style lang="scss" scoped>
+  #in-theater-swipe {
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+  }
 
-.swipe-wrap,
-.in-theaters-title {
-  width: 100%;
-  background: #fff;
-}
+  .in-theaters-title{
+    text-align: left;
+  }
 
-.in-theaters-title {
-  height: 32px;
-  font-size: 20px;
-}
+  .swipe-wrap{
+    height: 150px;
+    .swipe-item{
+      display: flex;
+    }
+    .swipeIntro{
+      margin-left: 10px;
+    }
+  }
 
-.in-theaters-title span {
-  letter-spacing: 2px;
-  font-family: YouYuan;
-  color: #000;
-  margin: 5px 10px;
-  float: left;
-}
+  .swipeImg{
+    img{
+      height: 150px;
+    }
+  }
 
-.in-theaters-title a {
-  margin: 5px 5px;
-  float: right;
-}
-
-.swipe-wrap {
-  overflow: hidden;
-  top: 21px;
-  width: 100%;
-  height: 150px;
-  margin: 0 10px;
-}
-
-.swipeImg {
-  float: left;
-}
-
-.swipeIntro {
-  float: left;
-  margin-left: 10px;
-  text-align: left;
-}
-
-.swipeIntro p {
-  font-style: italic;
-  width: 210px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.genres-tag {
-  margin-left: 5px;
-  padding: 1px 2px;
-  display: inline-block;
-  max-width: 6em;
-  height: 20px;
-  border: 1px solid #ff5722;
-  border-radius: 4px;
-}
+  .genres-tag{
+    margin: 0 5px;
+  }
 </style>
