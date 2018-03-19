@@ -17,9 +17,9 @@
                 <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
                 <span v-else>暂无评分</span>
                 <img v-for="starNum in Math.round(item.rating.average/2)" slot="icon"
-                     src="../../static/images/ratingStar.png" width="18" height="18">
+                     src="../../static/images/ratingStar.png" width="18" height="18" :key="item.rating.average">
               </mt-cell>
-              <mt-badge size="small" type="success" class="genres-tag" v-for='tags in item.genres'>
+              <mt-badge size="small" type="success" class="genres-tag" v-for='tags in item.genres' :key="item.genres">
                 {{tags}}
               </mt-badge>
             </div>
