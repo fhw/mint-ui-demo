@@ -1,0 +1,25 @@
+.fg-1{
+  flex-grow: 1;
+}
+
+.f-bold{
+  font-weight: bold;
+}
+
+.flex{
+  display: flex;
+}
+
+.mt-10{
+  margin-top: 10px;
+}
+
+
+@keyframes infiniteCircle {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

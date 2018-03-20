@@ -8,11 +8,15 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import 'normalize.css'
 import './assets/styles/mint-ui-review.scss'
+import './assets/styles/_global.scss'
+import BetterScroll from './components/common/BetterScroll'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
 
 Vue.use(MintUI)
+
+Vue.component('better-scroll', BetterScroll)
 
 /* eslint-disable no-new */
 new Vue({
