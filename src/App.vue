@@ -6,20 +6,20 @@
   </div>
 </template>
 <script>
-  import bottom from '@/components/common/Bottom'
-  import myHeader from '@/components/common/Header'
+import bottom from '@/components/common/Bottom'
+import myHeader from '@/components/common/Header'
 
-  export default {
-    name: 'app',
-    data() {
-      return {}
-    },
-    components: {
-      'my-bottom': bottom,
-      'my-header': myHeader
-    },
-    methods: {}
-  }
+export default {
+  name: 'app',
+  data () {
+    return {}
+  },
+  components: {
+    'my-bottom': bottom,
+    'my-header': myHeader
+  },
+  methods: {}
+}
 </script>
 <style>
   body, html {

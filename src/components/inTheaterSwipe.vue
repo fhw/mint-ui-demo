@@ -62,29 +62,29 @@
   </div>
 </template>
 <script type="text/javascript">
-  import api from './../api/api'
-  import cardItem from '@/components/common/CardItem'
+import api from './../api/api'
+import cardItem from '@/components/common/CardItem'
 
-  export default {
-    data () {
-      return {
-        imgList: [],
-        count: 5
-      }
-    },
-    components: {
-      cardItem
-    },
-    created: function () {
-      let that = this
-      // var city='广州';
-      api.inTheaters({params: {count: this.count}}).then((data) => {
-        that.imgList = data.data
-      }).catch((err) => {
-        console.error(err.message)
-      })
+export default {
+  data () {
+    return {
+      imgList: [],
+      count: 5
     }
+  },
+  components: {
+    cardItem
+  },
+  created: function () {
+    let that = this
+    // var city='广州';
+    api.inTheaters({params: {count: this.count}}).then((data) => {
+      that.imgList = data.data
+    }).catch((err) => {
+      console.error(err.message)
+    })
   }
+}
 </script>
 <style lang="scss" scoped>
   #in-theater-swipe {

@@ -10,18 +10,18 @@
 </template>
 
 <script>
-  export default {
-    methods: {
-      hasBackBtn: function () {
-        let nowRouterPath;
-        nowRouterPath = this.$router.currentRoute.path;
-        return !(nowRouterPath === '/' || nowRouterPath === '');
-      },
-      goBack: function () {
-        this.$router.go(-1);
-      }
+export default {
+  methods: {
+    hasBackBtn: function () {
+      let nowRouterPath
+      nowRouterPath = this.$router.currentRoute.path
+      return !(nowRouterPath === '/' || nowRouterPath === '')
+    },
+    goBack: function () {
+      this.$router.go(-1)
     }
   }
+}
 </script>
 
 <style scoped>

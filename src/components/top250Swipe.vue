@@ -17,10 +17,10 @@
               <mt-cell>
                 <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
                 <span v-else>暂无评分</span>
-                <img v-for="starNum in Math.round(item.rating.average/2)" slot="icon"
+                <img v-for="(starNum, index) in Math.round(item.rating.average/2)" :key="index" slot="icon"
                      src="../../static/images/ratingStar.png" width="18" height="18">
               </mt-cell>
-              <div class="genres-tag" v-for='tags in item.genres'>
+              <div class="genres-tag" v-for='(tags, index) in item.genres' :key="index">
                 {{tags}}
               </div>
             </div>
@@ -31,21 +31,21 @@
   </div>
 </template>
 <script type="text/javascript">
-  export default {
-    data() {
-      return {
-        imgList: [],
-      }
-    },
-    beforeCreate: function () {
-      let that = this;
-      this.$http('/douban/movie/top250?count=5').then(function (data) {
-        that.imgList = data.data;
-      }).catch((err) => {
-        console.error(err.message);
-      });
+export default {
+  data () {
+    return {
+      imgList: []
     }
+  },
+  beforeCreate: function () {
+    let that = this
+    this.$http('/douban/movie/top250?count=5').then(function (data) {
+      that.imgList = data.data
+    }).catch((err) => {
+      console.error(err.message)
+    })
   }
+}
 </script>
 <style lang="scss" scoped>
   #top250-swipe {

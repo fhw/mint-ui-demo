@@ -13,21 +13,21 @@
 </template>
 
 <script>
-  import inTheaterSwipe from '@/components/inTheaterSwipe'
-  import top250Swipe from '@/components/top250Swipe'
+import inTheaterSwipe from '@/components/inTheaterSwipe'
+import top250Swipe from '@/components/top250Swipe'
 
-  export default {
-    name: "home",
-    data() {
-      return {
-        selected: 'tab-container1'
-      }
-    },
-    components: {
-      'itSwipe': inTheaterSwipe,
-      'topSwipe': top250Swipe
+export default {
+  name: 'home',
+  data () {
+    return {
+      selected: 'tab-container1'
     }
+  },
+  components: {
+    'itSwipe': inTheaterSwipe,
+    'topSwipe': top250Swipe
   }
+}
 </script>
 
 <style scoped>

@@ -19,33 +19,33 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        selected: 'tab-container1'
-      }
-    },
-    methods: {
-      goHome: function () {
-        this.$router.push({
-          path: '/'
-        });
-      },
-      goInTheaterList: function () {
-        this.$router.push({
-          path: '/movie/movieList/in_theaters'
-        });
-      },
-      goTop25List: function () {
-        this.$router.push({
-          path: '/movie/movieList/top250'
-        });
-      },
-      //      goUsBoxList: function () {
-      //        this.$router.push({path: '/movie/movieList/us_box'});
-      //      }
+export default {
+  data () {
+    return {
+      selected: 'tab-container1'
     }
+  },
+  methods: {
+    goHome: function () {
+      this.$router.push({
+        path: '/'
+      })
+    },
+    goInTheaterList: function () {
+      this.$router.push({
+        path: '/movie/movieList/in_theaters'
+      })
+    },
+    goTop25List: function () {
+      this.$router.push({
+        path: '/movie/movieList/top250'
+      })
+    }
+    //      goUsBoxList: function () {
+    //        this.$router.push({path: '/movie/movieList/us_box'});
+    //      }
   }
+}
 </script>
 
 <style scoped>

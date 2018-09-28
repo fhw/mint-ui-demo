@@ -18,31 +18,31 @@
 </template>
 <script type="text/javascript">
 export default {
-    data() {
-            return {
-                result: [],
-                value: ''
-            }
-        },
-        watch: {
-            value: function() {
-                var that = this;
-                this.$http('/douban/movie/search?q=' + that.value, null, function(err, response) {
-                    if (err) {
-                        console.error(err.message);
-                    } else {
-                        that.result = response.subjects;
-                    }
-                });
-            }
-        },
-        methods: {
-            toDetail: function(id) {
-                this.$router.push({
-                    path: '/movieDetail/' + id
-                })
-            },
+  data () {
+    return {
+      result: [],
+      value: ''
+    }
+  },
+  watch: {
+    value: function () {
+      var that = this
+      this.$http('/douban/movie/search?q=' + that.value, null, function (err, response) {
+        if (err) {
+          console.error(err.message)
+        } else {
+          that.result = response.subjects
         }
+      })
+    }
+  },
+  methods: {
+    toDetail: function (id) {
+      this.$router.push({
+        path: '/movieDetail/' + id
+      })
+    }
+  }
 }
 </script>
 <style>

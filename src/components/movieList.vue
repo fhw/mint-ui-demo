@@ -3,12 +3,12 @@
         <h1>{{msg.title}}</h1>
         <!--         <section class="list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10"> -->
         <section class="list">
-            <div class="movie-item" v-for="(list, index) in msg.subjects" :key="list.id" @click='toDetail(list.id)'>
+            <div class="movie-item" v-for="(list, index) in msg.subjects" :key="index" @click='toDetail(list.id)'>
                 <img class="item-image" :src="list.images.medium">
                 <div class="item-intro">
                     <span class="item-title">{{list.title}}</span>
                     <div class="item-star">
-                        <span class="starImg" v-for="starNum in Math.round(list.rating.average/2)"></span>
+                        <span class="starImg" v-for="(starNum, index) in Math.round(list.rating.average/2)" :key="index"></span>
                         <span class="movie-rating" v-if='list.rating.average!=0'>{{list.rating.average}}</span>
                         <span class="movie-rating" v-else>暂无评分</span>
                     </div>
@@ -19,60 +19,59 @@
 </template>
 <script>
 export default {
-    name: 'movie-list',
-    data() {
-        return {
-            msg: [{
-                subjects: {
-                    images: {
-                        medium: ''
-                    }
-                }
-            }],
-            listType: '',
-            total: ''
+  name: 'movie-list',
+  data () {
+    return {
+      msg: [{
+        subjects: {
+          images: {
+            medium: ''
+          }
         }
-    },
-    watch: {
-        '$route': 'getData'
-    },
-    created: function() {
-        this.getData();
-    },
-    methods: {
-        toDetail: function(id) {
-            this.$router.push({
-                path: '/movieDetail/' + id
-            });
-        },
-        getData: function() {
-            var that = this;
-            this.listType = this.$route.params.type;
-
-            if (that.listType == null) {
-
-            } else {
-                this.$http('/douban/movie/' + that.listType + '?count=' + that.total, null, function(err, response) {
-                    if (err) {
-                        console.error(err.message);
-                    } else {
-                        that.msg = response;
-                    }
-                });
-            }
-
-        },
-        // loadMore: function() {
-        //     this.loading = true;
-        //     setTimeout(() => {
-        //         let last = this.msg[this.msg.length - 1];
-        //         for (let i = 1; i <= 10; i++) {
-        //             this.msg.push(last + i);
-        //         }
-        //         this.loading = false;
-        //     }, 2500);
-        // }
+      }],
+      listType: '',
+      total: ''
     }
+  },
+  watch: {
+    '$route': 'getData'
+  },
+  created: function () {
+    this.getData()
+  },
+  methods: {
+    toDetail: function (id) {
+      this.$router.push({
+        path: '/movieDetail/' + id
+      })
+    },
+    getData: function () {
+      var that = this
+      this.listType = this.$route.params.type
+
+      if (that.listType == null) {
+
+      } else {
+        this.$http('/douban/movie/' + that.listType + '?count=' + that.total, null, function (err, response) {
+          if (err) {
+            console.error(err.message)
+          } else {
+            that.msg = response
+          }
+        })
+      }
+    }
+    // loadMore: function() {
+    //     this.loading = true;
+    //     setTimeout(() => {
+    //         let last = this.msg[this.msg.length - 1];
+    //         for (let i = 1; i <= 10; i++) {
+    //             this.msg.push(last + i);
+    //         }
+    //         this.loading = false;
+    //     }, 2500);
+    // }
+  }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -8,9 +8,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'card-item'
-  }
+export default {
+  name: 'card-item'
+}
 </script>
 
 <style lang="scss" scoped>
