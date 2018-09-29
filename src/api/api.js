@@ -11,7 +11,17 @@ export const getDetail = function (options) {
   return axios.get(`/douban/movie/subject/${options.movieID}`, options)
 }
 
+export const getMovieList = function (params) {
+  return axios.get(`/douban/movie/${params.listType}`, params)
+}
+
+export const searchMovie = function (params) {
+  return axios.get(`/douban/movie/search`, params)
+}
+
 export default {
   inTheaters,
-  getDetail
+  getDetail,
+  getMovieList,
+  searchMovie
 }

@@ -33,7 +33,7 @@
 
       </div>
     </card-item>
-    <better-scroll class="bs-wrap" :data="imgList.subjects" :scroll-x="true">
+    <div class="bs-wrap" :data="imgList.subjects" :scroll-x="true">
       <div>
         <div class="bs-wrap-item" v-for='(item,itemIndex) in imgList.subjects' :key='itemIndex' v-if='itemIndex<5'>
           <router-link class="swipe-item" :to="{path:'/movieDetail/'+item.id}">
@@ -58,7 +58,7 @@
           </router-link>
         </div>
       </div>
-    </better-scroll>
+    </div>
   </div>
 </template>
 <script type="text/javascript">

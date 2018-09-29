@@ -17,6 +17,7 @@
     </div>
 </template>
 <script type="text/javascript">
+import api from './../api/api'
 export default {
   data () {
     return {
@@ -26,13 +27,22 @@ export default {
   },
   watch: {
     value: function () {
-      var that = this
-      this.$http('/douban/movie/search?q=' + that.value, null, function (err, response) {
-        if (err) {
-          console.error(err.message)
-        } else {
-          that.result = response.subjects
-        }
+    //   var that = this
+    //   this.$http('/douban/movie/search?q=' + that.value, null, function (
+    //     err,
+    //     response
+    //   ) {
+    //     if (err) {
+    //       console.error(err.message)
+    //     } else {
+    //       that.result = response.subjects
+    //     }
+    //   })
+      const params = {
+        q: this.value
+      }
+      api.searchMovie(params).then(res => {
+        this.result = res.data.subjects
       })
     }
   },
@@ -47,41 +57,41 @@ export default {
 </script>
 <style>
 .mint-search-list-warp {
-    padding-top: 48px;
+  padding-top: 48px;
 }
 
 .search-li {
-    display: block;
-    height: 103px;
+  display: block;
+  height: 103px;
 }
 
 .search-title {
-    font-size: 18px;
-    float: left;
-    left: 10px;
-    min-width: 190px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 18px;
+  float: left;
+  left: 10px;
+  min-width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .search-rating {
-    float: right;
-    right: 10px;
-    font-size: 16px;
-    color: #888;
+  float: right;
+  right: 10px;
+  font-size: 16px;
+  color: #888;
 }
 
 .search-rating,
 .search-title {
-    position: relative;
-    top: 40px;
-    height: 103px;
-    display: block;
+  position: relative;
+  top: 40px;
+  height: 103px;
+  display: block;
 }
 
 .search-li img {
-    /*position: absolute;*/
-    float: left;
+  /*position: absolute;*/
+  float: left;
 }
 </style>

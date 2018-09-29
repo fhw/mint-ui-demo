@@ -31,18 +31,27 @@
   </div>
 </template>
 <script type="text/javascript">
+import api from '../api/api'
 export default {
   data () {
     return {
-      imgList: []
+      imgList: [],
+      total: 5
     }
   },
-  beforeCreate: function () {
-    let that = this
-    this.$http('/douban/movie/top250?count=5').then(function (data) {
-      that.imgList = data.data
-    }).catch((err) => {
-      console.error(err.message)
+  create: function () {
+    const params = {
+      listType: 'top250',
+      count: this.total
+    }
+    api.getMovieList(params).then(res => {
+      const resData = res.data
+      console.log(resData)
+      if (resData.total > 0) {
+        this.imgList = resData
+      } else {
+        console.error('接口报错')
+      }
     })
   }
 }

@@ -18,6 +18,7 @@
     </div>
 </template>
 <script>
+import api from './../api/api'
 export default {
   name: 'movie-list',
   data () {
@@ -30,7 +31,7 @@ export default {
         }
       }],
       listType: '',
-      total: ''
+      total: 20
     }
   },
   watch: {
@@ -52,11 +53,17 @@ export default {
       if (that.listType == null) {
 
       } else {
-        this.$http('/douban/movie/' + that.listType + '?count=' + that.total, null, function (err, response) {
-          if (err) {
-            console.error(err.message)
+        const params = {
+          listType: that.listType,
+          count: that.total
+        }
+        api.getMovieList(params).then(res => {
+          const resData = res.data
+          console.log(resData)
+          if (resData.total > 0) {
+            this.msg = resData
           } else {
-            that.msg = response
+            console.error('接口报错')
           }
         })
       }

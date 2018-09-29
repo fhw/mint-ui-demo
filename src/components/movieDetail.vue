@@ -63,20 +63,13 @@ export default {
         that.detail.title = '查询失败！'
       } else {
         api.getDetail({ movieID: that.$route.params.id })
-          .then(function (data) {
-            that.detail = data.data
-            console.log(data.data)
+          .then(res => {
+            that.detail = res.data
+            console.log(res.data)
           })
           .catch(err => {
             console.error(err.message)
           })
-        // this.$http('/douban/movie/subject/' + that.$route.params.id).then(function (err, response) {
-        //   if (err) {
-        //     console.error(err.message);
-        //   } else {
-        //     that.detail = response;
-        //   }
-        // });
       }
     }
   }
