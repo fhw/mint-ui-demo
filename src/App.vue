@@ -28,15 +28,8 @@ export default {
   }
 
   #app {
-    font-family: 'Microsoft YaHei UI', 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
     height: 100%;
     width: 100%;
-    background: #f1f1f1;
-    overflow: hidden;
   }
 
   hr {

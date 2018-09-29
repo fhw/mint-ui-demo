@@ -10,9 +10,13 @@ import 'normalize.css'
 import './assets/styles/mint-ui-review.scss'
 import './assets/styles/_global.scss'
 
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
+
 Vue.config.productionTip = false
 
 Vue.use(MintUI)
+Vue.use(MuseUI)
 
 /* eslint-disable no-new */
 new Vue({

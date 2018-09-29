@@ -1,20 +1,25 @@
 <template>
-  <div>
-    <mt-tabbar v-model="selected" fixed>
+  <div class="app-bottom">
+    <!-- <mt-tabbar v-model="selected" fixed>
       <mt-tab-item id="tab-container1" @click.native="goHome">
         <img slot="icon" src="./../../assets/images/home.png">主页
       </mt-tab-item>
-      <mt-tab-item id="tab-container2" @click.native="goInTheaterList">
-        <img slot="icon" src="./../../assets/images/hot.png">热映
+        <mt-tab-item id="tab-container2" @click.native="goInTheaterList">
+          <img slot="icon" src="./../../assets/images/hot.png">热映
       </mt-tab-item>
-      <mt-tab-item id="tab-container3" @click.native="goTop25List">
-        <img slot="icon" src="./../../assets/images/top.png">TOP250
-      </mt-tab-item>
-      <!--<mt-tab-item id="tab-container4" @click.native="goUsBoxList">-->
-      <!--<img slot="icon" src="">-->
-      <!--北美票房榜-->
-      <!--</mt-tab-item>-->
-    </mt-tabbar>
+          <mt-tab-item id="tab-container3" @click.native="goTop25List">
+            <img slot="icon" src="./../../assets/images/top.png">TOP250
+      </mt-tab-item> -->
+    <!--<mt-tab-item id="tab-container4" @click.native="goUsBoxList">-->
+    <!--<img slot="icon" src="">-->
+    <!--北美票房榜-->
+    <!--</mt-tab-item>-->
+    <!-- </mt-tabbar> -->
+    <mu-bottom-nav>
+      <mu-bottom-nav-item title="主页" icon="restore"></mu-bottom-nav-item>
+      <mu-bottom-nav-item title="热映" icon="favorite"></mu-bottom-nav-item>
+      <mu-bottom-nav-item title="TOP250" icon="location_on"></mu-bottom-nav-item>
+    </mu-bottom-nav>
   </div>
 </template>
 
@@ -48,6 +53,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.app-bottom {
+  width: 100%;
+  position: fixed;
+  bottom: 0
+}
 </style>
