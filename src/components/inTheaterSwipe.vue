@@ -30,35 +30,8 @@
             </router-link>
           </mt-swipe-item>
         </mt-swipe>
-
       </div>
     </card-item>
-    <div class="bs-wrap" :data="imgList.subjects" :scroll-x="true">
-      <div>
-        <div class="bs-wrap-item" v-for='(item,itemIndex) in imgList.subjects' :key='itemIndex' v-if='itemIndex<5'>
-          <router-link class="swipe-item" :to="{path:'/movieDetail/'+item.id}">
-            <div class="swipeImg">
-              <img v-lazy="item.images.medium" :alt="item.title">
-            </div>
-            <div class="swipeIntro">
-              <p>{{item.title}}</p>
-              <p>{{item.original_title}}</p>
-              <div class="grade-wrap">
-                <div class="star" v-for="(starNum,index) in Math.round(item.rating.average/2)" :key="index"></div>
-                <span v-if='item.rating.average!=0'>{{item.rating.average}}分</span>
-                <span v-else>暂无评分</span>
-              </div>
-              <div class="flex mt-10">
-                <mt-badge size="small" type="success" class="genres-tag" v-for='(tags,index) in item.genres'
-                          :key="index">
-                  {{tags}}
-                </mt-badge>
-              </div>
-            </div>
-          </router-link>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <script type="text/javascript">

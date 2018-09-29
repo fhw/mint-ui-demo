@@ -68,20 +68,9 @@ export default {
         })
       }
     }
-    // loadMore: function() {
-    //     this.loading = true;
-    //     setTimeout(() => {
-    //         let last = this.msg[this.msg.length - 1];
-    //         for (let i = 1; i <= 10; i++) {
-    //             this.msg.push(last + i);
-    //         }
-    //         this.loading = false;
-    //     }, 2500);
-    // }
   }
 }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #movie-list {
     position: absolute;

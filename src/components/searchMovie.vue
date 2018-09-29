@@ -1,10 +1,6 @@
 <template>
     <div id="search-movie">
         <mt-search v-model="value" :result.sync="result">
-            <!--             <mt-cell v-for="item in result" :key="item.id" :title="item.title" :to="{path:'/movieDetail/'+item.id}">
-                <span>{{item.rating.average}}</span>
-                <img slot="icon" :src="item.images.small" width="64" height="103">
-            </mt-cell> -->
             <ul>
                 <li class="search-li" v-for="item in result" :key="item.id" @click='toDetail(item.id)'>
                     <img slot="icon" :src="item.images.small" width="64" height="103">
@@ -27,17 +23,6 @@ export default {
   },
   watch: {
     value: function () {
-    //   var that = this
-    //   this.$http('/douban/movie/search?q=' + that.value, null, function (
-    //     err,
-    //     response
-    //   ) {
-    //     if (err) {
-    //       console.error(err.message)
-    //     } else {
-    //       that.result = response.subjects
-    //     }
-    //   })
       const params = {
         q: this.value
       }
@@ -55,7 +40,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .mint-search-list-warp {
   padding-top: 48px;
 }

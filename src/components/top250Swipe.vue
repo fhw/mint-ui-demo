@@ -39,7 +39,7 @@ export default {
       total: 5
     }
   },
-  create: function () {
+  created: function () {
     const params = {
       listType: 'top250',
       count: this.total
