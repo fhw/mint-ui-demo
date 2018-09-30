@@ -1,43 +1,23 @@
 <template>
   <div id="app">
-    <my-header></my-header>
-    <router-view></router-view>
-    <my-bottom></my-bottom>
+    <img src="./assets/logo.png">
+    <router-view/>
   </div>
 </template>
-<script>
-import bottom from '@/components/common/Bottom'
-import myHeader from '@/components/common/Header'
 
+<script>
 export default {
-  name: 'app',
-  data () {
-    return {}
-  },
-  components: {
-    'my-bottom': bottom,
-    'my-header': myHeader
-  },
-  methods: {}
+  name: 'App'
 }
 </script>
+
 <style>
-  body, html {
-    width: 100%;
-    height: 100%;
-  }
-
-  #app {
-    height: 100%;
-    width: 100%;
-  }
-
-  hr {
-    margin: 5px 10px;
-    border: 1px solid #f5f5f5;
-  }
-
-  a{
-    text-decoration: none;
-  }
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 </style>

@@ -1,15 +1,27 @@
 <template>
     <div>
         <mu-drawer :open.sync="open" left :docked="false" @update:openSlideNav="open = $event">
-            <mu-list>
-                <mu-list-item button>
-                    <mu-list-item-title>Menu Item 1</mu-list-item-title>
+            <mu-list dense>
+                <mu-list-item button @click="slideNavTo('/')">
+                    <mu-list-item-action>
+                        <mu-icon value="home"></mu-icon>
+                    </mu-list-item-action>
+                    <mu-list-item-title>首页</mu-list-item-title>
                 </mu-list-item>
-                <mu-list-item button>
-                    <mu-list-item-title>Menu Item 2</mu-list-item-title>
+            </mu-list>
+            <mu-divider shallow-inset></mu-divider>
+            <mu-list dense>
+                <mu-list-item button @click="slideNavTo('/movie/movieList/in_theaters')">
+                <mu-list-item-action>
+                        <mu-icon value="whatshot"></mu-icon>
+                    </mu-list-item-action>
+                    <mu-list-item-title>热映</mu-list-item-title>
                 </mu-list-item>
-                <mu-list-item @click="open = false" button>
-                    <mu-list-item-title>Close</mu-list-item-title>
+                <mu-list-item button @click="slideNavTo('/movie/movieList/top250')">
+                <mu-list-item-action>
+                        <mu-icon value="format_list_numbered"></mu-icon>
+                    </mu-list-item-action>
+                    <mu-list-item-title>TOP250</mu-list-item-title>
                 </mu-list-item>
             </mu-list>
         </mu-drawer>
@@ -25,7 +37,14 @@ export default {
   },
   data () {
     return {
-      open: this.openSlideNav
+      open: this.openSlideNav,
+      listOpen: 'stared'
+    }
+  },
+  methods: {
+    slideNavTo (to) {
+      this.open = false
+      this.$router.push(to)
     }
   },
   watch: {

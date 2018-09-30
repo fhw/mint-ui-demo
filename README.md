@@ -1,4 +1,4 @@
-# mint-ui-demo
+# n-page-vue
 
 > A Vue.js project
 
