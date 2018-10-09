@@ -8,10 +8,17 @@ const PAGE_PATH = path.resolve(__dirname, '../src/pages')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-//多入口配置
+//多入口配置（配置webpack的entry）
 exports.entries = function() {
+  // 利用glob插件获取src/pages目录下的js文件数组
   let entryFiles = glob.sync(PAGE_PATH + '/*/*.js')
   let map = {}
+  /*
+  遍历数组
+  通过文件路径最后一位斜杠和点符合，切割获得文件名
+  生成对象 {filename: filePath, filename: filePath}
+  PS: 创建多页目录的时候，js文件尽量跟目录名一样，否则对象的属性名会重复
+  */
   entryFiles.forEach((filePath) => {
     let filename = filePath.substring(filePath.lastIndexOf('\/') + 1, filePath.lastIndexOf('.'))
     map[filename] = filePath
@@ -19,7 +26,7 @@ exports.entries = function() {
   return map
 }
 
-//多页面输出配置
+//多页面输出配置，配置好以后在开发环境和生产环境拼接到plugins属性上
 exports.htmlPlugin = function() {
   let entryHtml = glob.sync(PAGE_PATH + '/*/*.html')
   let arr = []
@@ -32,6 +39,7 @@ exports.htmlPlugin = function() {
       inject: true
     }
     if (process.env.NODE_ENV === 'production') {
+      // 打包配置，
       conf = merge(conf, {
         chunks: ['manifest', 'vendor', filename],
         minify: {
